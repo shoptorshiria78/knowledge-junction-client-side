@@ -30,10 +30,8 @@ const NavBar = () => {
                 {
                     user &&
                     <div>
-
                         <img className="w-8 md:w-12 h-8 md:h-12 rounded-full border-2 border-[#E55473]" src={user?.photoURL} alt="" />
                         <p className="text-fuchsia-600 text-sm md:text-base">{user?.displayName}</p>
-
                     </div>
                 }
 
@@ -47,6 +45,12 @@ const NavBar = () => {
                     <NavLink to='/allAssignment' className={({ isActive }) =>
                         isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
                     }>All Assignment</NavLink>
+                    <NavLink to='/createAssignment' className={({ isActive }) =>
+                        isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
+                    }>Create Assignment</NavLink>
+                    <NavLink to='/updateAssignment' className={({ isActive }) =>
+                        isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
+                    }>Update Assignment</NavLink>
                     {
                         user?.email && <NavLink to='/myAssignment' className={({ isActive }) =>
                             isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"

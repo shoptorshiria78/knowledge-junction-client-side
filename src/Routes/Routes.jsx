@@ -4,6 +4,8 @@ import ErrorPage from "../Page/ErrorPage";
 import Home from "../Page/Home";
 import LogIn from "../Page/LogIn";
 import Register from "../Page/Register";
+import CreateAssignment from "../Page/CreateAssignment";
+import UpdateAssignment from "../Page/UpdateAssignment";
 
 
 const Routes = createBrowserRouter([
@@ -16,7 +18,14 @@ const Routes = createBrowserRouter([
                 path:'/',
                 element:<Home></Home>
             },
-            
+            {
+                path:'/createAssignment',
+                element:<CreateAssignment></CreateAssignment>
+            },  
+            {
+                path:'/updateAssignment',
+                element:<UpdateAssignment></UpdateAssignment>
+            },          
         ]
     }
     ,
