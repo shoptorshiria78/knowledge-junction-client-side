@@ -1,8 +1,10 @@
+import axios from "axios";
 import assignmentPic from "../assets/createAssignmentPic.jpg"
 import  { useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import swal from "sweetalert";
 
 const CreateAssignment = () => {
 
@@ -20,7 +22,20 @@ const CreateAssignment = () => {
         const level = form.level.value;
         
         console.log(title, description, marks, image, date,level);
-        // const assignment = {title, description, marks, image, date,level}
+        const assignment = {title, description, marks, image, date,level}
+
+        axios.post("http://localhost:5000/api/v1/createAssignment",assignment)
+        .then(res=> 
+            {
+                console.log(res.data)
+                if(res.data.insertedId){
+                    swal("Congratulations", "You have Created Assignment Successfully", "success");
+                }
+                form.reset();
+            })
+            .catch(error=>{
+                console.log(error)
+            })
     }
 
     return (

@@ -12,6 +12,7 @@ const AssignmentCard = ({ assignment }) => {
                 </h2>
                 <p>{assignment.description}</p>
                 <p>Due Date:{assignment.dueDate}</p>
+                <p>Difficulty Level:{assignment.difficulty}</p>
                 <div className="card-actions justify-end">
                     <div className="badge badge-outline">update</div>
                     <div className="badge badge-outline">view</div>

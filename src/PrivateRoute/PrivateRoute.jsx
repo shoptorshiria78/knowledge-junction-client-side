@@ -11,7 +11,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation()
 
     if(isLoading){
-        return <Lottie animationData={loading}></Lottie>
+        return <Lottie className="max-h-screen" animationData={loading}></Lottie>
     }
     if(user){
         return children

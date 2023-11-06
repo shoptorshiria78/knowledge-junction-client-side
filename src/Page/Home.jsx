@@ -8,7 +8,7 @@ const Home = () => {
     const features = useLoaderData();
     const navigation = useNavigation();
     if(navigation.loading === "loading"){
-        return <Lottie animationData={loading}></Lottie>
+        return <Lottie className="max-h-screen" animationData={loading}></Lottie>
     }
 
     return (
