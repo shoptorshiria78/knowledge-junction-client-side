@@ -18,7 +18,7 @@ const Routes = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=>fetch("http://localhost:5000/features")
+                loader:()=>fetch("http://localhost:5000/api/v1/features")
             },
             {
                 path:'/createAssignment',
@@ -31,7 +31,7 @@ const Routes = createBrowserRouter([
             {
                 path:'/allAssignment',
                 element:<AllAssignment></AllAssignment>,
-                loader:()=>fetch("")
+               
             },          
         ]
     }
