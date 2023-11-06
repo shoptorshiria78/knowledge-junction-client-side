@@ -6,6 +6,7 @@ import LogIn from "../Page/LogIn";
 import Register from "../Page/Register";
 import CreateAssignment from "../Page/CreateAssignment";
 import UpdateAssignment from "../Page/UpdateAssignment";
+import AllAssignment from "../Page/AllAssignment";
 
 
 const Routes = createBrowserRouter([
@@ -16,7 +17,8 @@ const Routes = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Home></Home>,
+                loader:()=>fetch("http://localhost:5000/features")
             },
             {
                 path:'/createAssignment',
@@ -25,6 +27,11 @@ const Routes = createBrowserRouter([
             {
                 path:'/updateAssignment',
                 element:<UpdateAssignment></UpdateAssignment>
+            }, 
+            {
+                path:'/allAssignment',
+                element:<AllAssignment></AllAssignment>,
+                loader:()=>fetch("")
             },          
         ]
     }
