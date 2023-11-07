@@ -41,7 +41,7 @@ const ViewAssignment = () => {
             inputText,
             uEmail,
             status,
-            image, 
+            image,
             title,
             marks,
             name
@@ -90,12 +90,17 @@ const ViewAssignment = () => {
                         <h1>Submit Your Assignment</h1>
                         <div className="modal-action">
                             <form method="dialog" encType="multipart/form-data">
-                                
-                                <input  onChange={handleFileInput} type="url" name="url" id="" />
+                                <label className="label">
+                                    <span className="label-text">Submit PDF link</span>
+                                </label>
+                                <input onChange={handleFileInput} type="url" name="url" id="" />
                                 {file &&
                                     <p className="text-green-500 mt-2">Selected file: {file}</p>
                                 }
-                                <textarea className="mt-2" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
+                                <label className="label">
+                                    <span className="label-text">Write Note</span>
+                                </label>
+                                <textarea className="mt-2 px-3" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
                                 {/* if there is a button in form, it will close the modal */}
                                 <button onClick={handleSubmit} className="btn">Submitted</button>
                             </form>
