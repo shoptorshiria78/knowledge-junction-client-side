@@ -8,6 +8,7 @@ import CreateAssignment from "../Page/CreateAssignment";
 import UpdateAssignment from "../Page/UpdateAssignment";
 import AllAssignment from "../Page/AllAssignment";
 import ViewAssignment from "../Page/ViewAssignment";
+import SubmittedPage from "../Page/SubmittedPage";
 
 
 const Routes = createBrowserRouter([
@@ -41,6 +42,10 @@ const Routes = createBrowserRouter([
                 path:'/allAssignment',
                 element:<AllAssignment></AllAssignment>,
                
+            },  
+            {
+                path:'/submittedPendingAssignment',
+                element:<SubmittedPage></SubmittedPage>,
             },          
         ]
     }

@@ -16,7 +16,7 @@ const ViewAssignment = () => {
     const [text, setText] = useState();
 
     const handleFileInput = (e) => {
-        const file = e.target.files[0];
+        const file = e.target.value;
         setFile(file);
 
     }
@@ -27,18 +27,24 @@ const ViewAssignment = () => {
     }
     const handleSubmit = () => {
 
-        const inputFile = file.name || "Not Given";
+        const inputFile = file || "Not Given";
         const inputText = text || "Not Given";
         const uEmail = user?.email || "Not Given";
         const status = "pending";
         const image = assignmentData.img;
+        const title = assignmentData.title;
+        const marks = assignmentData.marks;
+        const name = user?.displayName;
         console.log(inputFile, inputText, uEmail, status);
         const submittedData = {
             inputFile,
             inputText,
             uEmail,
             status,
-            image
+            image, 
+            title,
+            marks,
+            name
         }
 
         axios.post('http://localhost:5000/api/v1/submittedAssignment', submittedData)
@@ -84,15 +90,10 @@ const ViewAssignment = () => {
                         <h1>Submit Your Assignment</h1>
                         <div className="modal-action">
                             <form method="dialog" encType="multipart/form-data">
-                                <input
-                                    type="file"
-                                    name="file"
-                                    accept=".pdf"
-                                    onChange={handleFileInput}
-                                    className="border p-2 rounded mb-2 mt-2"
-                                />
+                                
+                                <input  onChange={handleFileInput} type="url" name="url" id="" />
                                 {file &&
-                                    <p className="text-green-500 mt-2">Selected file: {file.name}</p>
+                                    <p className="text-green-500 mt-2">Selected file: {file}</p>
                                 }
                                 <textarea className="mt-2" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
                                 {/* if there is a button in form, it will close the modal */}
