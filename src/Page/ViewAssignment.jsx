@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
@@ -7,8 +7,9 @@ import swal from "sweetalert";
 
 const ViewAssignment = () => {
 
-    const { user} =useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const assignmentData = useLoaderData()
+    const navigate = useNavigate()
     console.log(assignmentData);
 
     const [file, setFile] = useState();
@@ -20,37 +21,40 @@ const ViewAssignment = () => {
 
     }
     const handleTextArea = (e) => {
-         const textArea = e.target.value;
-         setText(textArea);
-        
+        const textArea = e.target.value;
+        setText(textArea);
+
     }
     const handleSubmit = () => {
 
-        const inputFile = file || "Not Given";
-        const inputText =text || "Not Given" ;
-        const uEmail = user?.email || "Not Given"; 
+        const inputFile = file.name || "Not Given";
+        const inputText = text || "Not Given";
+        const uEmail = user?.email || "Not Given";
         const status = "pending";
-        console.log(inputFile, inputText, uEmail,status);
+        const image = assignmentData.img;
+        console.log(inputFile, inputText, uEmail, status);
         const submittedData = {
             inputFile,
             inputText,
             uEmail,
-            status}
+            status,
+            image
+        }
 
-        axios.post('http://localhost:5000/api/v1/submittedAssignment',submittedData)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data.insertedId){
-                swal("Congratulations", "You have Submitted Assignment Successfully", "success");
-            }
-           file.reset();
-           text.reset()
-        })
-        .then(error=>{
-            console.log(error)
-        })
+        axios.post('http://localhost:5000/api/v1/submittedAssignment', submittedData)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    swal("Congratulations", "You have Submitted Assignment Successfully", "success");
+                }
+                navigate('/allAssignment')
 
-     }
+            })
+            .then(error => {
+                console.log(error)
+            })
+
+    }
 
     return (
         <div className="flex gap-8">
@@ -78,23 +82,24 @@ const ViewAssignment = () => {
 
                     <div className="modal-box flex-col">
                         <h1>Submit Your Assignment</h1>
-                        <input
-                            type="file"
-                            name="file"
-                            accept=".pdf"
-                            onChange={handleFileInput}
-                            className="border p-2 rounded mb-2 mt-2"
-                        />
-                        {file &&
-                            <p className="text-green-500 mt-2">Selected file: {file.name}</p>
-                        }
-                       <textarea className="mt-2" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
                         <div className="modal-action">
-                            <form method="dialog">
+                            <form method="dialog" encType="multipart/form-data">
+                                <input
+                                    type="file"
+                                    name="file"
+                                    accept=".pdf"
+                                    onChange={handleFileInput}
+                                    className="border p-2 rounded mb-2 mt-2"
+                                />
+                                {file &&
+                                    <p className="text-green-500 mt-2">Selected file: {file.name}</p>
+                                }
+                                <textarea className="mt-2" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
                                 {/* if there is a button in form, it will close the modal */}
                                 <button onClick={handleSubmit} className="btn">Submitted</button>
                             </form>
                         </div>
+
                     </div>
 
                 </dialog>
