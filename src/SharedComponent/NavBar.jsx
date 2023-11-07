@@ -48,9 +48,7 @@ const NavBar = () => {
                     <NavLink to='/createAssignment' className={({ isActive }) =>
                         isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
                     }>Create Assignment</NavLink>
-                    <NavLink to='/updateAssignment' className={({ isActive }) =>
-                        isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
-                    }>Update Assignment</NavLink>
+                    
                     {
                         user?.email && <NavLink to='/myAssignment' className={({ isActive }) =>
                             isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"

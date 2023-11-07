@@ -7,6 +7,7 @@ import Register from "../Page/Register";
 import CreateAssignment from "../Page/CreateAssignment";
 import UpdateAssignment from "../Page/UpdateAssignment";
 import AllAssignment from "../Page/AllAssignment";
+import ViewAssignment from "../Page/ViewAssignment";
 
 
 const Routes = createBrowserRouter([
@@ -25,8 +26,16 @@ const Routes = createBrowserRouter([
                 element:<CreateAssignment></CreateAssignment>
             },  
             {
-                path:'/updateAssignment',
-                element:<UpdateAssignment></UpdateAssignment>
+                path:'/updateAssignment/:id',
+                element:<UpdateAssignment></UpdateAssignment>,
+                loader:({params})=>fetch(`http://localhost:5000/api/v1/assignment/${params.id}`)
+
+            }, 
+            {
+                path:'/viewAssignment/:id',
+                element:<ViewAssignment></ViewAssignment>,
+                loader:({params})=>fetch(`http://localhost:5000/api/v1/assignment/${params.id}`)
+
             }, 
             {
                 path:'/allAssignment',

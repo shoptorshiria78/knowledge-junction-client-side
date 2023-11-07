@@ -14,12 +14,12 @@ const CreateAssignment = () => {
           
         e.preventDefault();
         const form = e.target;
-        const title = form.title.value;
-        const description = form.description.value;
-        const marks = form.marks.value;
-        const image = form.image.value;
-        const date = form.date.value;
-        const level = form.level.value;
+        const title = form.title.value || "Not Given";
+        const description = form.description.value || "Not Given";
+        const marks = form.marks.value || "Not Given";
+        const image = form.image.value || "Not Given";
+        const date = form.date.value || "Not Given";
+        const level = form.level.value || "Not Given";
         
         console.log(title, description, marks, image, date,level);
         const assignment = {title, description, marks, image, date,level}

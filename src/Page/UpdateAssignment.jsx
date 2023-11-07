@@ -1,10 +1,26 @@
-import { useState } from "react";
+import {  useState } from "react";
 import DatePicker from "react-datepicker";
 import updatePic from "../assets/updatePic.jpg"
+import animationLoading from "../assets/loding animation.json"
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
+import axios from "axios";
+import swal from "sweetalert";
+import Lottie from "lottie-react";
 
 const UpdateAssignment = () => {
 
-    const [startDate, setStartDate] = useState(new Date());
+const navigation = useNavigation();
+const navigate = useNavigate()
+const [startDate, setStartDate] = useState(new Date());
+const assignmentData = useLoaderData()
+
+if(navigation.loading === "loading"){
+    return <Lottie animationData={animationLoading}></Lottie>
+}
+console.log(assignmentData);
+    
+
+   
     const handleUpdate =(e)=>{
           
         e.preventDefault();
@@ -12,13 +28,27 @@ const UpdateAssignment = () => {
         const title = form.title.value;
         const description = form.description.value;
         const marks = form.marks.value;
-        const image = form.image.value;
-        const date = form.date.value;
-        const level = form.level.value;
+        const img = form.image.value;
+        const dueDate = form.date.value;
+        const difficulty = form.level.value;
         
-        console.log(title, description, marks, image, date,level);
-        // const assignment = {title, description, marks, image, date,level}
-    }
+        console.log(title, description, marks, img, dueDate,difficulty);
+        const assignment = {title, description, marks ,img, dueDate,difficulty}
+
+        axios.put('http://localhost:5000/api/v1/updateAssignment', assignment)
+        .then(res=>{
+            console.log(res.data)
+            if(res.data.upsertedId){
+                swal("Congratulations", "You have updated Assignment Successfully", "success");
+            }
+            navigate('/allAssignment')
+            
+        }
+            )
+         .catch(error=>{
+            console.log(error)
+         })   
+    }     
 
     return (
         <div className="w-full max-w-[1200px] mx-auto flex mt-10">
@@ -32,13 +62,14 @@ const UpdateAssignment = () => {
                         <label className="label">
                             <span className="label-text">Title</span>
                         </label>
-                        <input name ="title" className=" w-full h-12 px-4" type="text" />
+                        <input defaultValue={assignmentData.title} name ="title" className=" w-full h-12 px-4" type="text" />
                     </div>
                     <div className="ml-4 mt-5 w-1/2">
                         <label className="label">
                             <span className="label-text">Description</span>
                         </label>
-                        <input name=" description" className=" w-full h-12 px-4 " type="text" />
+                        <input defaultValue={assignmentData.description} 
+                        name="description" className=" w-full h-12 px-4 " type="text" />
                     </div>
                 </div>
                 <div className="flex w-full justify-between">
@@ -46,21 +77,21 @@ const UpdateAssignment = () => {
                         <label className="label">
                             <span className="label-text">Marks</span>
                         </label>
-                        <input name="marks" className=" w-full h-12 px-4 " type="text" />
+                        <input defaultValue={assignmentData.marks} name="marks" className=" w-full h-12 px-4 " type="text" />
                     </div>
                     <div className="ml-4 mt-5 w-1/2">
                         <label className="label">
                             <span className="label-text">Thumbnail Image URL</span>
                         </label>
-                        <input name="image" className=" w-full h-12 px-4" type="text" />
+                        <input defaultValue={assignmentData.img} name="image" className=" w-full h-12 px-4" type="text" />
                     </div>
                 </div>
                 <div className="flex w-full justify-between">
                     <div className="mt-5 w-1/2">
                         <label className="label">
-                            <span className="label-text">Difficulty Level</span>
+                            <span  className="label-text">Difficulty Level</span>
                         </label>
-                        <select name="level" className=" w-full h-12 px-4">
+                        <select defaultValue={assignmentData.difficulty} name="level" className=" w-full h-12 px-4">
                             <option value="Easy">Easy</option>
                             <option value="Medium">Medium</option>
                             <option value="Hard">Hard</option>
@@ -70,10 +101,10 @@ const UpdateAssignment = () => {
                         <label className="label">
                             <span className="label-text">Due Date</span>
                         </label>
-                        <DatePicker name="date" className="w-full h-12 px-6 border" selected={startDate} onChange={(date) => setStartDate(date)} />
+                        <DatePicker defaultValue={assignmentData.dueDate} name="date" className="w-full h-12 px-6 border" selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                 </div>
-                <input className="w-full  h-12 mt-5" type="submit" value="Create Assignment" />
+                <input className="w-full  h-12 mt-5 bg-white" type="submit" value="Update Assignment" />
             </form>
 
         </div>
