@@ -3,6 +3,7 @@ import loading from "../assets/loding animation.json";
 import Lottie from "lottie-react";
 import FeatureCard from "../Component/FeatureCard";
 import Banner from "../SharedComponent/Banner";
+import FAQ from "../SharedComponent/FAQ";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
                     features.map(feature => <FeatureCard key={feature._id} feature={feature}></FeatureCard>)
                 }
             </div>
+            <FAQ></FAQ>
         </div>
 
     );
