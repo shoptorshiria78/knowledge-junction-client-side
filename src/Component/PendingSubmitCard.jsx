@@ -19,15 +19,13 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
           const updatedData ={ oMarks, feedback, status,inputFile,inputText,uEmail,image,title,marks,name};
           console.log(updatedData)
 
-          axios.patch('http://localhost:5000/api/v1/updateSubmittedAssignmentStatus', updatedData)
+          axios.put(`http://localhost:5000/api/v1/updateSubmittedAssignmentStatus/${singleData._id}`, updatedData)
           .then(res=>{
             console.log(res.data)
-            if(res.data.upsertedId){
+            if(res.data.modifiedCount){
                 swal("Congratulations", "You have updated Assignment Successfully", "success");
                 refetch();
-            }
-           
-            
+            }       
         }
             )
          .catch(error=>{
@@ -48,12 +46,12 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
                     {/* Modal Section */}
 
                     <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Give Mark</button>
-                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                    <dialog id="my_modal_5" className="modal modal-bottom  md:modal-middle">
 
-                        <div className="modal-box flex-col">
+                        <div className="modal-box  flex-col">
                             <h1>Submit Your Assignment</h1>
                             <div className="modal-action">
-                                <form method="dialog" encType="multipart/form-data">
+                                <form className='w-[350px]' method="dialog" encType="multipart/form-data">
                                     <a href={singleData.inputFile}>PDF file:{singleData.inputFile}</a>
                                     <p>Note:{singleData.inputText}</p>
                                     <label className="label">

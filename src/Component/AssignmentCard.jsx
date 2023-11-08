@@ -1,3 +1,4 @@
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +11,10 @@ const AssignmentCard = ({ assignment }) => {
     }
     const handleView = ()=>{
         navigate(`/viewAssignment/${assignment._id}`)
+    }
+    const handleDelete =()=>{
+        axios.delete(``)
+        .then()
     }
     return (
         <div className="card  shadow-xl">
@@ -25,6 +30,7 @@ const AssignmentCard = ({ assignment }) => {
                 <div className="card-actions justify-end">
                     <div onClick={handleUpdate} className="btn btn-primary">update</div>
                     <div onClick={handleView} className="btn btn-secondary">view</div>
+                    <div onClick={handleDelete} className="btn btn-accent">view</div>
                 </div>
             </div>
         </div>

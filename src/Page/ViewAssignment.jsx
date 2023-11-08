@@ -34,7 +34,9 @@ const ViewAssignment = () => {
         const image = assignmentData.img;
         const title = assignmentData.title;
         const marks = assignmentData.marks;
-        const name = user?.displayName;
+        const name = user?.displayName
+        const oMarks = "Not Given";
+        const feedback = "Not Given";
         console.log(inputFile, inputText, uEmail, status);
         const submittedData = {
             inputFile,
@@ -44,7 +46,9 @@ const ViewAssignment = () => {
             image,
             title,
             marks,
-            name
+            name,
+            oMarks,
+            feedback
         }
 
         axios.post('http://localhost:5000/api/v1/submittedAssignment', submittedData)

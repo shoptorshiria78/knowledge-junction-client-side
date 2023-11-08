@@ -45,13 +45,17 @@ const NavBar = () => {
                     <NavLink to='/allAssignment' className={({ isActive }) =>
                         isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
                     }>All Assignment</NavLink>
-                    <NavLink to='/createAssignment' className={({ isActive }) =>
-                        isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
-                    }>Create Assignment</NavLink>
-                    <NavLink to='/submittedPendingAssignment' className={({ isActive }) =>
-                        isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
-                    }>Submitted Assignment</NavLink>
-                    
+                    {
+                        user?.email && <NavLink to='/createAssignment' className={({ isActive }) =>
+                            isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
+                        }>Create Assignment</NavLink>
+                    }
+                    {
+                        user?.email && <NavLink to='/submittedPendingAssignment' className={({ isActive }) =>
+                            isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"
+                        }>Submitted Assignment</NavLink>
+
+                    }
                     {
                         user?.email && <NavLink to='/myAssignment' className={({ isActive }) =>
                             isActive ? "btn bg-red-500 text-white btn-md" : "btn bg-green-500 text-white btn-md"

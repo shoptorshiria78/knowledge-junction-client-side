@@ -1,13 +1,13 @@
 import axios from "axios";
 import assignmentPic from "../assets/createAssignmentPic.jpg"
-import  { useState } from "react";
+import  { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
-
+import { AuthContext } from "../AuthProvider/AuthProvider"
 import "react-datepicker/dist/react-datepicker.css";
 import swal from "sweetalert";
 
 const CreateAssignment = () => {
-
+    const {user} = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
 
     const handleCreate =(e)=>{
@@ -20,9 +20,9 @@ const CreateAssignment = () => {
         const image = form.image.value || "Not Given";
         const date = form.date.value || "Not Given";
         const level = form.level.value || "Not Given";
-        
+        const uEmail = user.email || "Not Given";
         console.log(title, description, marks, image, date,level);
-        const assignment = {title, description, marks, image, date,level}
+        const assignment = {title, description, marks, image, date,level,uEmail}
 
         axios.post("http://localhost:5000/api/v1/createAssignment",assignment)
         .then(res=> 

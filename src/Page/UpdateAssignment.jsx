@@ -15,7 +15,7 @@ const [startDate, setStartDate] = useState(new Date());
 const assignmentData = useLoaderData()
 
 if(navigation.loading === "loading"){
-    return <Lottie animationData={animationLoading}></Lottie>
+    return <Lottie className="h-screen" animationData={animationLoading}></Lottie>
 }
 console.log(assignmentData);
     
@@ -35,7 +35,7 @@ console.log(assignmentData);
         console.log(title, description, marks, img, dueDate,difficulty);
         const assignment = {title, description, marks ,img, dueDate,difficulty}
 
-        axios.put('http://localhost:5000/api/v1/updateAssignment', assignment)
+        axios.put('http://localhost:5000/api/v1/updateAssignment', assignment, {withCredentials: true})
         .then(res=>{
             console.log(res.data)
             if(res.data.upsertedId){
