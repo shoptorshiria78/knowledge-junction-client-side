@@ -1,10 +1,15 @@
-import axios from 'axios';
+
 import PropTypes from 'prop-types';
+
 import { useNavigate } from 'react-router-dom';
 
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
-const AssignmentCard = ({ assignment }) => {
 
+const AssignmentCard = ({ assignment, refetch }) => {
+    
+   
     const navigate = useNavigate();
     const handleUpdate=()=>{
        navigate(`/updateAssignment/${assignment._id}`)
@@ -12,9 +17,37 @@ const AssignmentCard = ({ assignment }) => {
     const handleView = ()=>{
         navigate(`/viewAssignment/${assignment._id}`)
     }
-    const handleDelete =()=>{
-        axios.delete(``)
-        .then()
+    const handleDelete =async(id)=>{
+      try{
+        await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/api/v1/deleteAssignment/${id}`)
+                .then(res=>{
+                    if(res.deletedCount>0){
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                          refetch()
+                    }
+                })
+                
+                        
+            }
+          })
+      }catch(error){
+            console.log(error)
+      }
+      
     }
     return (
         <div className="card  shadow-xl">
@@ -30,13 +63,14 @@ const AssignmentCard = ({ assignment }) => {
                 <div className="card-actions justify-end">
                     <div onClick={handleUpdate} className="btn btn-primary">update</div>
                     <div onClick={handleView} className="btn btn-secondary">view</div>
-                    <div onClick={handleDelete} className="btn btn-accent">view</div>
+                    <div onClick={()=>handleDelete(assignment._id)} className="btn btn-accent">Delete</div>
                 </div>
             </div>
         </div>
     );
 };
 AssignmentCard.propTypes = {
-    assignment: PropTypes.object
+    assignment: PropTypes.object,
+    refetch: PropTypes.func
 }
 export default AssignmentCard;

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AssignmentCard from "../Component/AssignmentCard";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -9,19 +10,25 @@ const AssignmentPage = () => {
 
     const { count } = useLoaderData()
    
-    const [allAssignment, setAllAssignment] = useState([])
+     const [allAssignment, setAllAssignment] = useState([])
     const [presentPage, setPresentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(6);
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = [...Array(numberOfPages).keys()];
 
+    const { refetch} = useQuery({
+        queryKey:["AllAssignmentCreated"],
+        queryFn:async()=>{
+            const AllAssignmentCreated = await fetch (`http://localhost:5000/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`);
+            const data = await AllAssignmentCreated.json();
+            setAllAssignment(data)
+             return data;
+        }
+        
+    });
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`)
-            .then(res => res.json())
-            .then(data => setAllAssignment(data))
+   
 
-    }, [presentPage, itemsPerPage])
     const handleLevel = (e) => {
         if (e.target.value === "Easy") {
             axios(`http://localhost:5000/api/v1/all/getAllAssignments/Easy?page=${presentPage}&size=${itemsPerPage}`)
@@ -90,7 +97,9 @@ const AssignmentPage = () => {
             </div>
             <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
                 {
-                    allAssignment.map(assignment => <AssignmentCard key={assignment._id} assignment={assignment}></AssignmentCard>)
+                    allAssignment.map(assignment => <AssignmentCard key={assignment._id}
+                        refetch={refetch}
+                        assignment={assignment}></AssignmentCard>)
                 }
             </div>
             <div className="my-10 space-x-3 text-center">
