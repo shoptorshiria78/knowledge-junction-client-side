@@ -69,7 +69,7 @@ const ViewAssignment = () => {
     }
 
     return (
-        <div className="flex gap-8 w-full max-w-[1200px] mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 w-full max-w-[1200px] mx-auto">
             <div className="flex-1 my-5">
                 <Title>{assignmentData.title}</Title>
                 <Paragraph>{assignmentData.description}</Paragraph>
@@ -116,7 +116,7 @@ const ViewAssignment = () => {
 
                 </dialog>
             </div>
-            <div className="flex-1 mt-10 mb-5" >
+            <div className="flex-1  mt-10 mb-5" >
                 <img className="h-screen object-cover" src={assignmentData.img} alt="" />
             </div>
 

@@ -51,23 +51,23 @@ const UpdateAssignment = () => {
     }
 
     return (
-        <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex mt-10">
-            <div className="mr-5 flex-1">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row mt-10">
+            <div className="mr-5 w-full flex-1">
                 <img src={updatePic} alt="" />
             </div>
-            <div className="w-full flex-1">
+            <div className="w-full flex-1 ">
             <h1 className="text-center text-3xl font-bold text-amber-500 ">Update Assignment </h1>
                 <form onSubmit={handleUpdate} className="w-full my-4 bg-emerald-100 px-5 py-4 " action="">
                        <div className="flex  justify-between w-full ">
                         <div className="mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Title</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Title</span>
                             </label>
                             <input defaultValue={assignmentData.title} name="title" className=" w-full h-12 px-4" type="text" />
                         </div>
                         <div className="ml-4 mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Description</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Description</span>
                             </label>
                             <input defaultValue={assignmentData.description}
                                 name="description" className=" w-full h-12 px-4 " type="text" />
@@ -76,13 +76,13 @@ const UpdateAssignment = () => {
                     <div className="flex w-full justify-between">
                         <div className=" w-1/2 mt-5">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Marks</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Marks</span>
                             </label>
                             <input defaultValue={assignmentData.marks} name="marks" className=" w-full h-12 px-4 " type="text" />
                         </div>
                         <div className="ml-4 mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Thumbnail Image URL</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Thumbnail Image URL</span>
                             </label>
                             <input defaultValue={assignmentData.img} name="image" className=" w-full h-12 px-4" type="text" />
                         </div>
@@ -90,7 +90,7 @@ const UpdateAssignment = () => {
                     <div className="flex w-full justify-between">
                         <div className="mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Difficulty Level</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Difficulty Level</span>
                             </label>
                             <select defaultValue={assignmentData.difficulty} name="level" className=" w-full h-12 px-4">
                                 <option value="Easy">Easy</option>
@@ -100,7 +100,7 @@ const UpdateAssignment = () => {
                         </div>
                         <div className="ml-4  mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-amber-400 font-bold text-xl">Due Date</span>
+                                <span className="label-text text-amber-400 font-bold text-base lg:text-xl">Due Date</span>
                             </label>
                             <DatePicker defaultValue={assignmentData.dueDate} name="date" className="w-full h-12 px-6 border" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>

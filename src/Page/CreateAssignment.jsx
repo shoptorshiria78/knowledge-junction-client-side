@@ -39,7 +39,7 @@ const CreateAssignment = () => {
     }
 
     return (
-        <div className="w-full max-w-[1200px] mx-auto flex mt-10">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col-reverse lg:flex-row mt-10">
 
             <div className="flex-1">
                 <h1 className="text-center text-3xl font-bold text-emerald-500 ">Create Assignment To learn</h1>
@@ -49,13 +49,13 @@ const CreateAssignment = () => {
                     <div className="flex  justify-between w-full ">
                         <div className="mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Title</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Title</span>
                             </label>
                             <input name="title" className=" w-full h-12 px-4" type="text" />
                         </div>
                         <div className="ml-4 mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Description</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Description</span>
                             </label>
                             <input name="description" className=" w-full h-12 px-4 " type="text" />
                         </div>
@@ -63,13 +63,13 @@ const CreateAssignment = () => {
                     <div className="flex w-full justify-between">
                         <div className=" w-1/2 mt-5">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Marks</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Marks</span>
                             </label>
                             <input name="marks" className=" w-full h-12 px-4 " type="text" />
                         </div>
                         <div className="ml-4 mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Thumbnail Image URL</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Thumbnail Image URL</span>
                             </label>
                             <input name="image" className=" w-full h-12 px-4" type="text" />
                         </div>
@@ -77,7 +77,7 @@ const CreateAssignment = () => {
                     <div className="flex w-full justify-between">
                         <div className="mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Difficulty Level</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Difficulty Level</span>
                             </label>
                             <select name="level" className=" w-full h-12 px-4">
                                 <option value="Easy">Easy</option>
@@ -87,7 +87,7 @@ const CreateAssignment = () => {
                         </div>
                         <div className="ml-4  mt-5 w-1/2">
                             <label className="label">
-                                <span className="label-text text-emerald-600 font-bold text-xl">Due Date</span>
+                                <span className="label-text text-emerald-600 font-bold text-base lg:text-xl">Due Date</span>
                             </label>
                             <DatePicker name="date" className="w-full h-12 px-6 border" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
