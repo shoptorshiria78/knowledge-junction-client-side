@@ -19,7 +19,7 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
           const updatedData ={ oMarks, feedback, status,inputFile,inputText,uEmail,image,title,marks,name};
           console.log(updatedData)
 
-          axios.put(`http://localhost:5000/api/v1/updateSubmittedAssignmentStatus/${singleData._id}`, updatedData)
+          axios.put(`https://knowledge-junction-server-side.vercel.app/api/v1/updateSubmittedAssignmentStatus/${singleData._id}`, updatedData)
           .then(res=>{
             console.log(res.data)
             if(res.data.modifiedCount){

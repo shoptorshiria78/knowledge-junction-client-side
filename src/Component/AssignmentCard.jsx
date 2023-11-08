@@ -29,7 +29,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/api/v1/deleteAssignment/${id}`)
+                axios.delete(`https://knowledge-junction-server-side.vercel.app/api/v1/deleteAssignment/${id}`)
                 .then(res=>{
                     if(res.deletedCount>0){
                         Swal.fire(

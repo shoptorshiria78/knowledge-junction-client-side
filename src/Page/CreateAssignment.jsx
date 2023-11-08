@@ -25,7 +25,7 @@ const CreateAssignment = () => {
         console.log(title, description, marks, image, date, level);
         const assignment = { title, description, marks, image, date, level, uEmail }
 
-        axios.post("http://localhost:5000/api/v1/createAssignment", assignment)
+        axios.post("https://knowledge-junction-server-side.vercel.app/api/v1/createAssignment", assignment)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {

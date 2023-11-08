@@ -19,7 +19,7 @@ const AssignmentPage = () => {
     const { refetch} = useQuery({
         queryKey:["AllAssignmentCreated"],
         queryFn:async()=>{
-            const AllAssignmentCreated = await fetch (`http://localhost:5000/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`);
+            const AllAssignmentCreated = await fetch (`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`);
             const data = await AllAssignmentCreated.json();
             setAllAssignment(data)
              return data;
@@ -31,7 +31,7 @@ const AssignmentPage = () => {
 
     const handleLevel = (e) => {
         if (e.target.value === "Easy") {
-            axios(`http://localhost:5000/api/v1/all/getAllAssignments/Easy?page=${presentPage}&size=${itemsPerPage}`)
+            axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Easy?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
                    
@@ -39,21 +39,21 @@ const AssignmentPage = () => {
 
         }
         if (e.target.value === "Medium") {
-            axios(`http://localhost:5000/api/v1/all/getAllAssignments/Medium?page=${presentPage}&size=${itemsPerPage}`)
+            axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Medium?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
                     
                 })
         }
         if (e.target.value === "Hard") {
-            axios(`http://localhost:5000/api/v1/all/getAllAssignments/Hard?page=${presentPage}&size=${itemsPerPage}`)
+            axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Hard?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
                    
                 })
         }
         if (e.target.value === "All") {
-            axios(`http://localhost:5000/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`)
+            axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
                    

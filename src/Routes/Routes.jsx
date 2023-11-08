@@ -24,7 +24,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/api/v1/features")
+                loader: () => fetch("https://knowledge-junction-server-side.vercel.app/api/v1/features")
             },
             {
                 path: '/createAssignment',
@@ -35,19 +35,19 @@ const Routes = createBrowserRouter([
             {
                 path: '/updateAssignment/:id',
                 element: <PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/assignment/${params.id}`)
+                loader: ({ params }) => fetch(`https://knowledge-junction-server-side.vercel.app/api/v1/assignment/${params.id}`)
 
             },
             {
                 path: '/viewAssignment/:id',
                 element: <PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/assignment/${params.id}`)
+                loader: ({ params }) => fetch(`https://knowledge-junction-server-side.vercel.app/api/v1/assignment/${params.id}`)
 
             },
             {
                 path: '/allAssignment',
                 element: <AssignmentPage></AssignmentPage>,
-                loader: () => fetch("http://localhost:5000/api/v1/allAssignmentCount")
+                loader: () => fetch("https://knowledge-junction-server-side.vercel.app/api/v1/allAssignmentCount")
 
             },
             {

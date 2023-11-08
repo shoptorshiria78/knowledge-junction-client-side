@@ -35,7 +35,7 @@ const UpdateAssignment = () => {
         console.log(title, description, marks, img, dueDate, difficulty);
         const assignment = { title, description, marks, img, dueDate, difficulty }
 
-        axios.put('http://localhost:5000/api/v1/updateAssignment', assignment, { withCredentials: true })
+        axios.put('https://knowledge-junction-server-side.vercel.app/api/v1/updateAssignment', assignment, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 if (res.data.upsertedId) {
