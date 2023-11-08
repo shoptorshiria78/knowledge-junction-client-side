@@ -7,7 +7,7 @@ const useMyAssignment = () => {
     const {data:myAssignmentSubmission, isLoading, isFetching, refetch} = useQuery({
         queryKey:["myAssignmentSubmission"],
         queryFn:async()=>{
-            const myAssignmentSubmission = await fetch (`https://knowledge-junction-server-side.vercel.app/api/v1/mySubmittedAssignment?uEmail=${user?.email}`, {credentials:"include"});
+            const myAssignmentSubmission = await fetch (`https://knowledge-junction-server-side.vercel.app/api/v1/mySubmittedAssignment?uEmail=${user?.email}`);
             return await myAssignmentSubmission.json();
         }
     });
