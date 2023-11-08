@@ -34,18 +34,18 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
     }
 
     return (
-        <div className="border border-gray-400  bg-base-100  my-10">
+        <div className="border bg-lime-100  my-10">
             <div className='flex'>
                 <div className='flex-1'>
                     <img className='h-[220px] object-fill w-full' src={singleData.image} alt="Shoes" /></div>
                 <div className="card-body flex-1">
-                    <h2 className="card-title">{singleData.title}</h2>
-                    <p>Name:{singleData.name}</p>
-                    <p>Marks:{singleData.marks}</p>
+                    <h2 className="card-title text-xl text-emerald-600 font-bold">{singleData.title}</h2>
+                    <p className='text-lg text-lime-400'><span className='font-bold'>Name:</span>{singleData.name}</p>
+                    <p className='text-lg text-lime-400'><span className='font-bold'>Marks:</span>{singleData.marks}</p>
 
                     {/* Modal Section */}
 
-                    <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Give Mark</button>
+                    <button className="w-full py-3 bg-amber-500 text-white rounded-xl" onClick={() => document.getElementById('my_modal_5').showModal()}>Give Mark</button>
                     <dialog id="my_modal_5" className="modal modal-bottom  md:modal-middle">
 
                         <div className="modal-box  flex-col">

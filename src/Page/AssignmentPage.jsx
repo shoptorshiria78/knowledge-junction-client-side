@@ -83,10 +83,23 @@ const AssignmentPage = () => {
 
 
     return (
-        <div >
+        <div className="w-full max-w-[1200px] mx-auto mt-10">
+              <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://i.ibb.co/tqBfcxT/study-Banner.jpg)' }}>
+               
 
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="max-w-md">
+                        
+                        
+                        <h1 className="text-emerald-200 text-5xl my-4 font-bold">Coursework Assignments</h1>
+                        <p className="text-emerald-200 text-2xl font-medium">Streamline your academic journey with our assignment page. Easily manage, track, and submit coursework, projects, and homework online.</p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
             <div className="my-10 text-center">
-                <h1> Difficulty Level: <select onChange={handleLevel} className=" bg-cyan-600 text-white w-28 rounded-xl px-3 py-1" name="" id="">
+                <h1 className="text-emerald-700 font-bold text-xl"> Difficulty Level: <select onChange={handleLevel} className=" bg-emerald-600 text-white w-28 rounded-xl px-3 py-1" name="" id="">
                     <option value="All">All</option>
                     <option value="Easy">Easy</option>
                     <option value="Medium">Medium</option>
@@ -95,7 +108,7 @@ const AssignmentPage = () => {
 
                 </select> </h1>
             </div>
-            <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
                 {
                     allAssignment.map(assignment => <AssignmentCard key={assignment._id}
                         refetch={refetch}
@@ -103,18 +116,18 @@ const AssignmentPage = () => {
                 }
             </div>
             <div className="my-10 space-x-3 text-center">
-                <button onClick={handlePrevious} className="btn btn-primary">Previous</button>
+                <button onClick={handlePrevious} className="px-3 py-3 bg-emerald-600 text-white rounded-xl">Previous</button>
                 {
 
                     pages.map(page => <button
-                        className={presentPage === page ? "btn-primary w-10 rounded-xl" : "btn-accent w-10 rounded-xl"}
+                        className={presentPage === page ? "px-3 py-3 bg-amber-400 text-white rounded-xl" : "px-3 py-3 bg-lime-600 text-white rounded-xl"}
                         onClick={() => setPresentPage(page)}
                         key={page}
                     >{page}</button>)
 
                 }
-                <button onClick={handleNext} className="btn btn-primary">Next</button>
-                <select className="bg-blue-500 text-white w-10 h-6 rounded-xl" onChange={handleItemPerPage} value={itemsPerPage} name="" id="">
+                <button onClick={handleNext} className="px-3 py-3 bg-emerald-600 text-white rounded-xl">Next</button>
+                <select className="bg-orange-400 text-white w-16 h-10 rounded-xl" onChange={handleItemPerPage} value={itemsPerPage} name="" id="">
                     <option value="6">6</option>
                     <option value="12">12</option>
                     <option value="18">18</option>

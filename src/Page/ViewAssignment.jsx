@@ -3,6 +3,8 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
+import Title from "../SharedComponent/Title";
+import Paragraph from "../SharedComponent/Paragraph";
 
 
 const ViewAssignment = () => {
@@ -67,27 +69,27 @@ const ViewAssignment = () => {
     }
 
     return (
-        <div className="flex gap-8">
-            <div className="flex-1">
-                <h1>{assignmentData.title}</h1>
-                <h1>{assignmentData.description}</h1>
-                <h1>{assignmentData.difficulty}</h1>
-                <h1>Some Instructions For the Assignment</h1>
-                <ul>
-                    <li>Assignment Should be Submitted within due Date mentioned here.If anyone missed the deadline will get 5 marks less for late Submission. </li>
-                    <li>The Assignment should be submitted in pdf form with in the given field. </li>
+        <div className="flex gap-8 w-full max-w-[1200px] mx-auto">
+            <div className="flex-1 my-5">
+                <Title>{assignmentData.title}</Title>
+                <Paragraph>{assignmentData.description}</Paragraph>
+                <Paragraph>{assignmentData.difficulty}</Paragraph>
+                <h1 className="text-2xl text-center  font-bold text-amber-700">Some Instructions For the Assignment</h1>
+                <ul className="text-base font-normal text-amber-400 ml-5 mt-4">
+                    <li>1.Assignment Should be Submitted within due Date mentioned here.If anyone missed the deadline will get 5 marks less for late Submission. </li>
+                    <li>2.The Assignment should be submitted in pdf form with in the given field. </li>
                     <li>
-                        If  a person take the assignment , he or she has to complete their assignment alone. Any one cannot take help from others. If we can detect that it has been copied the assignment taker will get 0 marks for his or her this types of attempt.
+                        3.If  a person take the assignment , he or she has to complete their assignment alone. Any one cannot take help from others. If we can detect that it has been copied the assignment taker will get 0 marks for his or her this types of attempt.
                     </li>
                 </ul>
 
-                <h1>{assignmentData.marks}</h1>
-                <h1>{assignmentData.dueDate}</h1>
+                <Paragraph>Marks: {assignmentData.marks}</Paragraph>
+                <Paragraph> Due Date: {assignmentData.dueDate}</Paragraph>
 
                 {/* MODAL SECTION */}
 
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
+                <button className="px-4 py-3 bg-amber-500 text-white rounded-xl w-full" onClick={() => document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
                 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
 
                     <div className="modal-box flex-col">
@@ -114,8 +116,8 @@ const ViewAssignment = () => {
 
                 </dialog>
             </div>
-            <div className="flex-1" >
-                <img src={assignmentData.img} alt="" />
+            <div className="flex-1 mt-10 mb-5" >
+                <img className="h-screen object-cover" src={assignmentData.img} alt="" />
             </div>
 
         </div>

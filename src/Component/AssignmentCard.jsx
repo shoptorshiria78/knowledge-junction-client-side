@@ -53,17 +53,17 @@ const AssignmentCard = ({ assignment, refetch }) => {
         <div className="card  shadow-xl">
             <figure><img className='w-full h-[300px] object-cover' src={assignment.img} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title text-emerald-600 font-bold text-2xl">
                     {assignment.title}
-                    <div className="badge badge-secondary">Marks:{assignment.marks}</div>
+                    <div className="badge badge-secondary bg-emerald-700">Marks:{assignment.marks}</div>
                 </h2>
-                <p>{assignment.description}</p>
-                <p>Due Date:{assignment.dueDate}</p>
-                <p>Difficulty Level:{assignment.difficulty}</p>
+                <p className='text-xl text-emerald-400 font-medium'>{assignment.description}</p>
+                <p className='text-base text-emerald-400 font-normal'><span className='font-bold  text-emerald-600'>Due Date:</span>{assignment.dueDate}</p>
+                <p className='text-base text-emerald-400 font-normal'><span className='font-bold text-emerald-600'>Difficulty Level:</span>{assignment.difficulty}</p>
                 <div className="card-actions justify-end">
-                    <div onClick={handleUpdate} className="btn btn-primary">update</div>
-                    <div onClick={handleView} className="btn btn-secondary">view</div>
-                    <div onClick={()=>handleDelete(assignment._id)} className="btn btn-accent">Delete</div>
+                    <div onClick={handleUpdate} className="px-3 py-3 bg-lime-600 text-white rounded-xl">update</div>
+                    <div className="px-3 py-3 bg-emerald-600 text-white rounded-xl" onClick={handleView} >view</div>
+                    <div onClick={()=>handleDelete(assignment._id)} className="px-3 py-3 bg-amber-400 text-white rounded-xl">Delete</div>
                 </div>
             </div>
         </div>

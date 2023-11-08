@@ -47,23 +47,23 @@ const LogIn = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-lime-100">
             <div className="w-full max-w-[1200px] mx-auto ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div >
-                        <Lottie className=" ml-10 h-[350px]" animationData={logInAnimation} loop={false}></Lottie>
+                        <Lottie className=" ml-10 h-[450px]" animationData={logInAnimation} loop={false}></Lottie>
                     </div>
-                    <div className="card  w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card  w-full max-w-sm shadow-2xl bg-amber-50">
                         <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-emerald-400 font-bold text-xl">Email</span>
                                 </label>
                                 <input type="email" placeholder="email" className="input input-bordered" name="email" required />
                             </div>
                             <div className="relative">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-emerald-400  font-bold text-xl">Password</span>
                                 </label>
                                 <input name='password' type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full  " required />
                                 <span className="absolute top-[54px] left-[300px] " onClick={() => setShowPassword(!showPassword)}>
@@ -73,15 +73,15 @@ const LogIn = () => {
                                     } </span>
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" className="bg-red-400 rounded-xl py-3 w-full text-white" value="Log In" />
+                                <input type="submit" className="bg-emerald-400 rounded-xl py-3 w-full text-white" value="Log In" />
                             </div>
                         </form>
 
                         <div className="text-center my-3">
-                            <h1>Already have an account?<Link to='/register'>Register</Link></h1>
+                            <h1 className="text-emerald-400 text-lg font-medium">Already have an account?<Link to='/register'>Register</Link></h1>
                         </div>
-                        <div className="mx-auto my-10 flex flex-col  w-[400px]">
-                            <button onClick={handleGoogleLogIn} className=" flex bg-fuchsia-500 text-white items-center w-full p-2 mt-3 rounded-full border-fuchsia-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
+                        <div className="mx-auto my-10 flex flex-col  w-[300px]">
+                            <button onClick={handleGoogleLogIn} className=" flex bg-emerald-500 text-white items-center w-full p-2 mt-3 rounded-full border-emerald-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
                         </div>
                     </div>
                 </div>
