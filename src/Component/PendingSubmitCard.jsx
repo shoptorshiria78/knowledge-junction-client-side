@@ -57,11 +57,11 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
                                     <label className="label">
                                         <span className="label-text">Obtained Marks</span>
                                     </label>
-                                    <input onChange={(e)=>setOMarks(e.target.value)} name="marks" type="text"></input>
+                                    <input className='border-2 border-gray-400' onChange={(e)=>setOMarks(e.target.value)} name="marks" type="text"></input>
                                     <label className="label">
                                         <span className="label-text">FeedBack</span>
                                     </label>
-                                    <textarea onChange={(e)=>setFeedback(e.target.value)} className="mt-2" name="feedback" id="" cols="40" rows="3"></textarea>
+                                    <textarea className='border-2 border-gray-400 mt-2' onChange={(e)=>setFeedback(e.target.value)}  name="feedback" id="" cols="40" rows="3"></textarea>
                                     {/* if there is a button in form, it will close the modal */}
                                     <button onClick={handleSubmit} className="btn">Submit</button>
                                 </form>

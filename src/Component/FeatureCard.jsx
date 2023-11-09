@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import { motion } from "framer-motion"
+import { useState } from 'react';
 
 const FeatureCard = ({ feature }) => {
+    const [rotate, setRotate] = useState(false)
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <motion.div animate={{rotate: rotate ? 360 : 0}} onClick={()=>setRotate(!rotate)} className="card bg-base-100 shadow-xl">
             <figure className="px-2 pt-2">
                 <img  src={feature.img} alt="Shoes" className="rounded-xl h-[300px] w-full object-cover" />
             </figure>
@@ -13,7 +16,7 @@ const FeatureCard = ({ feature }) => {
                     <button className="btn bg-green-700 px-4 py-2 rounded-xl text-white">See Details</button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 FeatureCard.propTypes = {

@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import AssignmentCard from "../Component/AssignmentCard";
 import axios from "axios";
 import {  useQuery } from "@tanstack/react-query";
+import Title from "../SharedComponent/Title";
 
 
 
@@ -95,7 +96,6 @@ const AssignmentPage = () => {
         <div className="w-full max-w-[1200px] mx-auto mt-10">
             <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://i.ibb.co/tqBfcxT/study-Banner.jpg)' }}>
 
-
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
 
@@ -107,6 +107,7 @@ const AssignmentPage = () => {
                     </div>
                 </div>
             </div>
+            <Title className="my-10">All Assignments </Title>
             <div className="my-10 text-center">
                 <h1 className="text-emerald-700 font-bold text-xl"> Difficulty Level: <select onChange={handleLevel} className=" bg-emerald-600 text-white w-28 rounded-xl px-3 py-1" name="" id="">
                     <option value="All">All</option>

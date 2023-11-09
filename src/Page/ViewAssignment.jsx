@@ -99,14 +99,14 @@ const ViewAssignment = () => {
                                 <label className="label">
                                     <span className="label-text">Submit PDF link</span>
                                 </label>
-                                <input onChange={handleFileInput} type="url" name="url" id="" />
+                                <input className="border-2 border-gray-400" onChange={handleFileInput} type="url" name="url" id="" />
                                 {file &&
                                     <p className="text-green-500 mt-2">Selected file: {file}</p>
                                 }
                                 <label className="label">
                                     <span className="label-text">Write Note</span>
                                 </label>
-                                <textarea className="mt-2 px-3" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
+                                <textarea className="mt-2 px-3 border-2 border-gray-400" onChange={handleTextArea} name="" id="" cols="40" rows="3"></textarea>
                                 {/* if there is a button in form, it will close the modal */}
                                 <button onClick={handleSubmit} className="btn">Submitted</button>
                             </form>

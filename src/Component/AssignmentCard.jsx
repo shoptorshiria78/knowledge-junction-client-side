@@ -1,14 +1,14 @@
 
 import PropTypes from 'prop-types';
-
 import { useNavigate } from 'react-router-dom';
-
+import { motion } from "framer-motion"
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { useState } from 'react';
 
 const AssignmentCard = ({ assignment, refetch }) => {
     
-   
+    const [rotate, setRotate] = useState(false)
     const navigate = useNavigate();
     const handleUpdate=()=>{
        navigate(`/updateAssignment/${assignment._id}`)
@@ -49,7 +49,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
       
     }
     return (
-        <div className="card  shadow-xl">
+        <motion.div animate={{rotate: rotate ? 360 : 0}} onClick={()=>setRotate(!rotate)}   className="card  shadow-xl">
             <figure><img className='w-full h-[300px] object-cover' src={assignment.img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-emerald-600 font-bold text-2xl">
@@ -65,7 +65,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
                     <div onClick={()=>handleDelete(assignment._id)} className="px-3 py-3 bg-amber-400 text-white rounded-xl">Delete</div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 AssignmentCard.propTypes = {
