@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
 const AssignmentCard = ({ assignment, refetch }) => {
     
    
@@ -29,9 +28,9 @@ const AssignmentCard = ({ assignment, refetch }) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://knowledge-junction-server-side.vercel.app/api/v1/deleteAssignment/${id}`)
+                axios.delete(`https://knowledge-junction-server-side.vercel.app/api/v1/deleteAssignment/${id}?uEmail=${assignment.uEmail}`, {withCredentials: true})
                 .then(res=>{
-                    if(res.deletedCount>0){
+                    if(res.data.deletedCount>0){
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',

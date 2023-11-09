@@ -18,12 +18,12 @@ const CreateAssignment = () => {
         const title = form.title.value || "Not Given";
         const description = form.description.value || "Not Given";
         const marks = form.marks.value || "Not Given";
-        const image = form.image.value || "Not Given";
-        const date = form.date.value || "Not Given";
-        const level = form.level.value || "Not Given";
+        const img = form.image.value || "Not Given";
+        const duDate = form.date.value || "Not Given";
+        const difficulty = form.level.value || "Not Given";
         const uEmail = user.email || "Not Given";
-        console.log(title, description, marks, image, date, level);
-        const assignment = { title, description, marks, image, date, level, uEmail }
+        console.log(title, description, marks, img, duDate, difficulty);
+        const assignment = { title, description, marks, img, duDate, difficulty, uEmail }
 
         axios.post("https://knowledge-junction-server-side.vercel.app/api/v1/createAssignment", assignment)
             .then(res => {

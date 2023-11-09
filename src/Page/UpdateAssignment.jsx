@@ -7,8 +7,8 @@ import axios from "axios";
 import swal from "sweetalert";
 import Lottie from "lottie-react";
 
-const UpdateAssignment = () => {
 
+const UpdateAssignment = () => {
     const navigation = useNavigation();
     const navigate = useNavigate()
     const [startDate, setStartDate] = useState(new Date());
@@ -19,26 +19,27 @@ const UpdateAssignment = () => {
     }
     console.log(assignmentData);
 
-
+    
 
     const handleUpdate = (e) => {
 
         e.preventDefault();
         const form = e.target;
+        const img = form.image.value;
         const title = form.title.value;
         const description = form.description.value;
         const marks = form.marks.value;
-        const img = form.image.value;
-        const dueDate = form.date.value;
         const difficulty = form.level.value;
+        const dueDate = form.date.value;
+        const uEmail = assignmentData.uEmail;
 
-        console.log(title, description, marks, img, dueDate, difficulty);
-        const assignment = { title, description, marks, img, dueDate, difficulty }
+        console.log(title, description, marks, img, dueDate, difficulty, uEmail);
+        const assignment = { img, title, description, marks, difficulty,dueDate, uEmail}
 
-        axios.put('https://knowledge-junction-server-side.vercel.app/api/v1/updateAssignment', assignment, { withCredentials: true })
+        axios.put(`https://knowledge-junction-server-side.vercel.app/api/v1/updateAssignment/${assignmentData._id}?uEmail=${assignmentData.uEmail}`, assignment, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                if (res.data.upsertedId) {
+                if (res.data.modifiedCount) {
                     swal("Congratulations", "You have updated Assignment Successfully", "success");
                 }
                 navigate('/allAssignment')

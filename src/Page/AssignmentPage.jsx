@@ -2,39 +2,44 @@ import {  useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AssignmentCard from "../Component/AssignmentCard";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import {  useQuery } from "@tanstack/react-query";
 
 
 
 const AssignmentPage = () => {
 
     const { count } = useLoaderData()
-   
-     const [allAssignment, setAllAssignment] = useState([])
+
+    const [allAssignment, setAllAssignment] = useState([])
     const [presentPage, setPresentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(6);
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = [...Array(numberOfPages).keys()];
 
-    const { refetch} = useQuery({
-        queryKey:["AllAssignmentCreated"],
-        queryFn:async()=>{
-            const AllAssignmentCreated = await fetch (`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`);
-            const data = await AllAssignmentCreated.json();
-            setAllAssignment(data)
-             return data;
-        }
+    const handlePagination = async (page) => {
+        setPresentPage(parseInt(page))
+        await refetch();
         
-    });
-
-   
+    }
+    
+        const { refetch} = useQuery({
+            queryKey: ["AllAssignmentCreated", presentPage],
+            queryFn: async () => {
+                const AllAssignmentCreated = await fetch(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`);
+                const data = await AllAssignmentCreated.json();
+                setAllAssignment(data)
+                return data
+            }
+    
+        });
+        
 
     const handleLevel = (e) => {
         if (e.target.value === "Easy") {
             axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Easy?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
-                   
+
                 })
 
         }
@@ -42,29 +47,32 @@ const AssignmentPage = () => {
             axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Medium?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
-                    
+
                 })
         }
         if (e.target.value === "Hard") {
             axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments/Hard?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
-                   
+
                 })
         }
         if (e.target.value === "All") {
             axios(`https://knowledge-junction-server-side.vercel.app/api/v1/all/getAllAssignments?page=${presentPage}&size=${itemsPerPage}`)
                 .then(res => {
                     setAllAssignment(res.data)
-                   
+
                 })
         }
     }
 
-    
+
 
     console.log(count, allAssignment);
     console.log(count)
+
+    
+
     const handleItemPerPage = (e) => {
         setItemsPerPage(parseInt(e.target.value));
         setPresentPage(0)
@@ -81,20 +89,21 @@ const AssignmentPage = () => {
         }
     }
 
+   
 
     return (
         <div className="w-full max-w-[1200px] mx-auto mt-10">
-              <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://i.ibb.co/tqBfcxT/study-Banner.jpg)' }}>
-               
+            <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://i.ibb.co/tqBfcxT/study-Banner.jpg)' }}>
+
 
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        
-                        
+
+
                         <h1 className="text-emerald-200 text-5xl my-4 font-bold">Coursework Assignments</h1>
                         <p className="text-emerald-200 text-2xl font-medium">Streamline your academic journey with our assignment page. Easily manage, track, and submit coursework, projects, and homework online.</p>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -120,8 +129,8 @@ const AssignmentPage = () => {
                 {
 
                     pages.map(page => <button
-                        className={presentPage === page ? "px-3 py-3 bg-amber-400 text-white rounded-xl" : "px-3 py-3 bg-lime-600 text-white rounded-xl"}
-                        onClick={() => setPresentPage(page)}
+                        className={presentPage === page ? "btn px-3 py-3 bg-amber-400 text-white rounded-xl" : "btn px-3 py-3 bg-lime-600 text-white rounded-xl"}
+                        onClick={()=>handlePagination(page)}
                         key={page}
                     >{page}</button>)
 
