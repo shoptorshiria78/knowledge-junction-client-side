@@ -1,5 +1,4 @@
 import Lottie from "lottie-react";
-
 import animationLoading from "../assets/loding animation.json"
 import PendingSubmitCard from "../Component/PendingSubmitCard";
 import usePendingSubmission from "../Hooks/usePendingSubmission";
@@ -9,7 +8,7 @@ const SubmittedPage = () => {
    const{ pendingSubmission, isLoading, refetch} = usePendingSubmission()
 
     if(isLoading){
-        return <Lottie animationData={animationLoading}></Lottie>
+        return <Lottie className="h-screen" animationData={animationLoading}></Lottie>
     }
     console.log(pendingSubmission)
     return (

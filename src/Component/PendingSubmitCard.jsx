@@ -2,6 +2,12 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import swal from 'sweetalert';
+import { pdfjs } from 'react-pdf';
+import ShowPdfComp from './ShowPdfComp';
+import pdf from "../assets/assignment_category_0001 pdf.pdf"
+
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+    
 
 const PendingSubmitCard = ({ refetch, singleData }) => {
 
@@ -33,6 +39,7 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
          })  
     }
 
+
     return (
         <div className="border bg-lime-100  my-10">
             <div className='flex'>
@@ -54,6 +61,7 @@ const PendingSubmitCard = ({ refetch, singleData }) => {
                                 <form className='w-[350px]' method="dialog" encType="multipart/form-data">
                                     <a href={singleData.inputFile}>PDF file:{singleData.inputFile}</a>
                                     <p>Note:{singleData.inputText}</p>
+                                   <ShowPdfComp>{pdf}</ShowPdfComp>
                                     <label className="label">
                                         <span className="label-text">Obtained Marks</span>
                                     </label>
