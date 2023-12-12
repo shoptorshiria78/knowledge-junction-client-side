@@ -53,7 +53,7 @@ const ViewAssignment = () => {
             feedback
         }
 
-        axios.post('https://knowledge-junction-server-side.vercel.app/api/v1/submittedAssignment', submittedData)
+        axios.post('https://knowledge-junction-server-side.vercel.app/api/v1/submittedAssignment', submittedData,{ withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {

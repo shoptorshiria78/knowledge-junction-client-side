@@ -5,7 +5,7 @@ import MySubmissionCard from "../Component/MySubmissionCard";
 
 const MySubmissionPage = () => {
     const { myAssignmentSubmission, isLoading}= useMyAssignment();
-
+    console.log(myAssignmentSubmission);
     if(isLoading){
         return <Lottie animationData={loadingAnimation}></Lottie>
     }

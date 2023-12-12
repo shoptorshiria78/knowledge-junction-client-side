@@ -6,6 +6,7 @@ import Banner from "../SharedComponent/Banner";
 import FAQ from "../SharedComponent/FAQ";
 import Title from "../SharedComponent/Title";
 import Paragraph from "../SharedComponent/Paragraph";
+import Team from "../Component/Team";
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
             </div>
             </div>
             <FAQ></FAQ>
+            <Team></Team>
         </div>
 
     );
