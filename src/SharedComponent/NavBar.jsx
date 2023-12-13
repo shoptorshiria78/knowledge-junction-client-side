@@ -61,6 +61,11 @@ const NavBar = () => {
                             isActive ? "text-base bg-emerald-400 text-white px-3 py-3 rounded-xl" : "text-base bg-green-600 text-white px-3 py-3 rounded-xl"
                         }>My Assignment</NavLink>
                     }
+                    {
+                        user?.email && <NavLink to='/quiz' className={({ isActive }) =>
+                            isActive ? "text-base bg-emerald-400 text-white px-3 py-3 rounded-xl" : "text-base bg-green-600 text-white px-3 py-3 rounded-xl"
+                        }>Quiz</NavLink>
+                    }
 
                     {
                         user ? <button onClick={handleLogOut} className="btn bg-green-500 text-white btn-md">Log Out </button>

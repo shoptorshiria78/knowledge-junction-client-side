@@ -11,6 +11,7 @@ import SubmittedPage from "../Page/SubmittedPage";
 import MySubmissionPage from "../Page/MySubmissionPage";
 import AssignmentPage from "../Page/AssignmentPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute"
+import Quiz from "../Quiz/Quiz";
 
 
 
@@ -31,6 +32,10 @@ const Routes = createBrowserRouter([
                 element: <PrivateRoute>
                     <CreateAssignment></CreateAssignment>
                 </PrivateRoute>
+            },
+            {
+                path: '/quiz',
+                element:<Quiz></Quiz>
             },
             {
                 path: '/updateAssignment/:id',
